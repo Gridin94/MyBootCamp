@@ -4,7 +4,6 @@
 
 #Get password
 echo "Password verification starts..."
-#read "$*"
 pass=${*}
 
 #Configure colors for output
@@ -16,27 +15,27 @@ reset=$'\e[0m'
 if test ${#pass} -ge 10 ; then
     #Check if password has numbers
     echo $pass | grep -q [0-9]
-     if test $? -eq 0 ; then
-            #Check if password has lower letter
-           echo $pass | grep -q [a-z]
-                if test $? -eq 0 ; then
-                    #Check if password has capital letter
-                    echo $pass | grep -q [A-Z]   
-                      if test $? -eq 0 ; then
-                       echo "$green Password is strong $reset"
-                       exit 0;
-                   else
-                       echo "$red There must be at least ona capital letter in the password $reset"
-                       exit 1;
-                   fi
+    if test $? -eq 0 ; then
+        #Check if password has lower letter
+        echo $pass | grep -q [a-z]
+        if test $? -eq 0 ; then
+            #Check if password has capital letter
+            echo $pass | grep -q [A-Z]   
+            if test $? -eq 0 ; then
+                echo "$green Password is strong $reset"
+                exit 0;
             else
-               echo "$red There must be at least one lower letter in the password $reset"
-               exit 1;
+                echo "$red There must be at least ona capital letter in the password $reset"
+                exit 1;
             fi
-     else
-       echo "$red There must be at least one number in the password $reset"
-       exit 1;
-     fi
+        else
+            echo "$red There must be at least one lower letter in the password $reset"
+            exit 1;
+        fi
+    else
+        echo "$red There must be at least one number in the password $reset"
+        exit 1;
+    fi
 else
     echo "$red There are less then 10 digits in the password $reset"
     exit 1;
