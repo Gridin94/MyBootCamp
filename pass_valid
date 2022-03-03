@@ -1,6 +1,10 @@
 #!/bin/bash
 
-#This script is validating a password strength
+#This script is validating a password strength:
+#Password must have at least 10 digits, 
+#must include numbers,Capital and lower letters.
+#Password can be provided in command line or from
+#a file if -f is added and a path is provided.
 
 #Configure colors for output
 red=$'\e[0;31m'
@@ -12,7 +16,6 @@ echo "Password verification starts..."
 #Check if -f exist in command line - if yes read from file, else get password from command line
 if [ ${1} = "-f" ]; then
     path=${2}
-    echo $path
     #Check if file exist
     if [[ ! -f $path ]]; then
         echo "$red The file doesn't exist $reset"
