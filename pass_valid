@@ -1,6 +1,9 @@
 #!/bin/bash
 
-#This script is validating a password strength
+#This script is validating a password strength:
+#Password must have at least 10 digits, 
+#must include numbers,Capital and lower letters.
+#Password can be provided only in command line.
 
 #Get password
 echo "Password verification starts..."
