@@ -9,17 +9,19 @@ reset=$'\e[0m'
 
 #Get password
 echo "Password verification starts..."
+#Check if -f exist in command line - if yes read from file, else get password from command line
 if [ ${1} = "-f" ]; then
     path=${2}
+    echo $path
     #Check if file exist
     if [[ ! -f $path ]]; then
         echo "$red The file doesn't exist $reset"
         exit 1;
     else
+        #Read file content
         pass=$(<${2})
     fi
 else
-    #pass=$(<${*})
     pass=${*}
 fi
 
